@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VPN Panel — Dashboard</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <h1>VPN Panel</h1>
+    <div>
+      <span id="whoami" style="color: var(--text-dim); font-size: 13px; margin-right: 12px;"></span>
+      <button id="logoutBtn">Déconnexion</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>Ajouter un serveur (VPS)</h2>
+      <div class="row">
+        <input id="s_label" placeholder="Nom (ex: VPS Paris 1)" />
+        <input id="s_host" placeholder="IP ou domaine" />
+        <input id="s_port" placeholder="Port SSH (22)" />
+        <input id="s_user" placeholder="Utilisateur SSH (root)" />
+        <input id="s_key" placeholder="Chemin clé privée (ex: /root/.ssh/id_rsa)" />
+        <button class="btn-small" id="addServerBtn" style="background:var(--accent); color:#05100b;">Ajouter</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Serveurs</h2>
+      <table id="serversTable">
+        <thead><tr><th>Nom</th><th>Hôte</th><th>Statut</th><th>Action</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="card" id="installCard" style="display:none;">
+      <h2>Installer un protocole sur <span id="selServerLabel"></span></h2>
+      <div class="row">
+        <select id="protocolSelect">
+          <option value="vmess-ws">V2Ray + WebSocket (vmess-ws)</option>
+          <option value="reality">Reality (xtls-rprx-vision)</option>
+          <option value="hysteria2">Hysteria2</option>
+          <option value="ss-rust">Shadowsocks-rust</option>
+          <option value="https">HTTPS proxy</option>
+        </select>
+        <input id="i_domain" placeholder="Domaine (si nécessaire)" />
+        <input id="i_port" placeholder="Port (optionnel)" />
+        <button class="btn-small" id="installBtn" style="background:var(--accent); color:#05100b;">Installer</button>
+      </div>
+      <pre id="installLog" style="white-space:pre-wrap; font-size:12px; color:var(--text-dim); max-height:200px; overflow:auto;"></pre>
+    </div>
+
+    <div class="card" id="clientsCard" style="display:none;">
+      <h2>Clients revendus — installation #<span id="selInstallationId"></span></h2>
+      <div class="row">
+        <input id="c_label" placeholder="Nom du client final" />
+        <input id="c_expires" type="date" placeholder="Expire le" />
+        <input id="c_price" placeholder="Prix (FCFA)" />
+        <button class="btn-small" id="addClientBtn" style="background:var(--accent); color:#05100b;">Créer un accès</button>
+      </div>
+      <div id="newClientResult"></div>
+      <table id="clientsTable">
+        <thead><tr><th>Nom</th><th>Statut</th><th>Expire</th><th>Prix</th><th>Action</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

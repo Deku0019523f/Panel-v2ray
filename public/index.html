@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VPN Panel — Connexion</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="login-body">
+  <div class="login-card">
+    <h1>VPN Panel</h1>
+    <p class="subtitle">V2Ray · Reality · Hysteria2 · SS · HTTPS</p>
+    <form id="loginForm">
+      <label>Identifiant</label>
+      <input type="text" id="username" required autocomplete="username" />
+      <label>Mot de passe</label>
+      <input type="password" id="password" required autocomplete="current-password" />
+      <button type="submit">Se connecter</button>
+      <p id="error" class="error"></p>
+    </form>
+  </div>
+  <script src="/js/login.js"></script>
+</body>
+</html>
